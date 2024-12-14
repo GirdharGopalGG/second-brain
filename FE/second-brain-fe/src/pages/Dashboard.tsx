@@ -8,6 +8,9 @@ import { SideBar } from "../components/SideBar"
 import { useContent } from "../hooks/useContent"
 import axios from "axios"
 
+
+const beUrl = import.meta.env.VITE_BE_URL as string
+
  export function Dashboard(){
   const [modalOpen, setModalOpen] = useState(false)
   const contents = useContent()
@@ -26,14 +29,14 @@ import axios from "axios"
                 <Button  variant="secondary" text="Share Brain" startIcon={<ShareIcon/>}
                 
                 onClick={ async() => {
-                  const response = await axios.post('http://localhost:3000/share',{
+                  const response = await axios.post(`${beUrl}share`,{
                     share:true
                     },{
                     headers:{
                       'token':localStorage.getItem('token')
                     }
                   })
-                  const shareUrl = `http://localhost:5173${response.data.link}`
+                  const shareUrl = `https://cohort-3-0-rjc2.vercel.app${response.data.link}`
 
                   alert("Copied to Clipboard")
                   

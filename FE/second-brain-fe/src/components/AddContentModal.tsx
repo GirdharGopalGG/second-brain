@@ -15,9 +15,12 @@ enum contentType {
 }
 
 export function AddContentModal({open,onClose}:{
+    
     open:boolean,
     onClose:()=>void
 }){
+const beUrl = import.meta.env.VITE_BE_URL as string
+
 
     const linkRef = useRef<HTMLInputElement>()
     const titleRef = useRef<HTMLInputElement>()
@@ -27,7 +30,7 @@ export function AddContentModal({open,onClose}:{
     const title = titleRef.current?.value
     const link = linkRef.current?.value
     
-    await axios.post('http://localhost:3000/content',
+    await axios.post(`${beUrl}content`,
         {
             title,link,type
         },{
@@ -55,8 +58,8 @@ export function AddContentModal({open,onClose}:{
                     </div>
                 </div>
                 <div >
-                    <InputBox reference={titleRef} placeholder={'Title'} />
-                    <InputBox reference={linkRef} placeholder={'Link'} />
+                    <InputBox type="text" reference={titleRef} placeholder={'Title'} />
+                    <InputBox type="text" reference={linkRef} placeholder={'Link'} />
                 </div>
                 <div className="flex justify-between px-10 items-center my-2 ">
                     <div className="cursor-default">Type: </div>

@@ -14,11 +14,14 @@ const navigate = useNavigate()
 
     async function signin(){
 
+const beUrl = import.meta.env.VITE_BE_URL as string
+
+
         try{
         const username = usernameRef.current?.value
         const password = passwordRef.current?.value
 
-        const response = await axios.post("http://localhost:3000/signin", {
+        const response = await axios.post(`${beUrl}signin`, {
 
         username,
         password
@@ -46,8 +49,8 @@ const navigate = useNavigate()
         <div className="h-screen w-screen bg-slate-300 flex justify-center items-center">
             <div className=" bg-white min-w-80 rounded-xl min-h-36 p-6 " >
                 <div className="flex flex-col items-center   ">
-                <InputBox placeholder={"Username"} reference={usernameRef} />
-                <InputBox placeholder={"Password"} reference={passwordRef} />
+                <InputBox type="text" placeholder={"Username"} reference={usernameRef} />
+                <InputBox type="password" placeholder={"Password"} reference={passwordRef} />
                 
                 </div>
                 

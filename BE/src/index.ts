@@ -1,4 +1,3 @@
-// const express = require('express')
 import jwt from 'jsonwebtoken'
 import express, { Request, Response } from 'express'
 require('dotenv').config()
@@ -143,7 +142,7 @@ app.post('/share',authMiddleware,async (req,res)=>{
             userId:req.id
         })
         res.json({
-            link:'/share/'+hash
+            link:'share/'+hash
         })
         return
         }catch(e){

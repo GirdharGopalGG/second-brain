@@ -5,6 +5,8 @@ import axios from "axios"
 import { Link, useNavigate } from "react-router-dom"
 
 export function Signup() {
+const beUrl = import.meta.env.VITE_BE_URL as string
+
   const navigate = useNavigate()
   const [isDisabled, setIsDisabled] = useState(false)
   const [error,setError] = useState('')
@@ -21,7 +23,7 @@ export function Signup() {
     const password = passwordRef.current?.value
     
     try {
-       const response = await axios.post("http://localhost:3000/signup", {
+       const response = await axios.post(`${beUrl}signup`, {
         username: username,
         password: password,
       })
@@ -63,8 +65,8 @@ export function Signup() {
       <div className="h-screen w-screen bg-slate-300 flex justify-center items-center">
         <div className=" bg-white min-w-80 rounded-xl min-h-60 p-6">
           <div className="flex flex-col items-center  ">
-            <InputBox placeholder={"Username"} reference={usernameRef} />
-            <InputBox placeholder={"Password"} reference={passwordRef} />
+            <InputBox type="text" placeholder={"Username"} reference={usernameRef} />
+            <InputBox type="password" placeholder={"Password"} reference={passwordRef} />
 
           {error && <p className="text-red-600 pt-2">{error}</p>}
 

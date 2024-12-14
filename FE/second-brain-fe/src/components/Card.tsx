@@ -15,6 +15,8 @@ interface card{
 }
 
 export function Card(props:card){
+const beUrl = import.meta.env.VITE_BE_URL as string
+
     const location = useLocation()
     // console.log(location.pathname)
     return <div>
@@ -37,7 +39,7 @@ export function Card(props:card){
 
                 <div className="cursor-pointer"
                 onClick = {async() => {
-                    const response = await axios.delete('http://localhost:3000/content',
+                    const response = await axios.delete(`${beUrl}content`,
                       
                     {
                         headers:{
