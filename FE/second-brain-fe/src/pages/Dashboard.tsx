@@ -36,7 +36,7 @@ const beUrl = import.meta.env.VITE_BE_URL as string
                       'token':localStorage.getItem('token')
                     }
                   })
-                  const shareUrl = `https://cohort-3-0-rjc2.vercel.app${response.data.link}`
+                  const shareUrl = `https://secondbrain-mu.vercel.app${response.data.link}`
 
                   alert("Copied to Clipboard")
                   
