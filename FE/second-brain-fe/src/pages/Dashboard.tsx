@@ -29,7 +29,7 @@ const beUrl = import.meta.env.VITE_BE_URL as string
                 <Button  variant="secondary" text="Share Brain" startIcon={<ShareIcon/>}
                 
                 onClick={ async() => {
-                  const response = await axios.post(`${beUrl}`,{
+                  const response = await axios.post(`${beUrl}share`,{
                     share:true
                     },{
                     headers:{

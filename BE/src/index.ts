@@ -123,7 +123,7 @@ app.post('/share',authMiddleware,async (req,res)=>{
     if(linkExists){
         const hash = linkExists.hash
         res.json({
-            link:'/share/'+hash
+            link:'share/'+hash
         })
         return
     }

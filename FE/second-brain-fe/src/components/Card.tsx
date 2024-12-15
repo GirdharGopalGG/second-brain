@@ -6,6 +6,7 @@ import { DocumentIcon } from "../icons/DocumentIcon"
 import { useLocation } from "react-router-dom"
 import axios from "axios"
 import { ImageIcon } from "../icons/ImageIcon"
+import { useEffect } from "react"
 
 
 interface card{
@@ -20,6 +21,14 @@ const beUrl = import.meta.env.VITE_BE_URL as string
 
     const location = useLocation()
     // console.log(location.pathname)
+
+    useEffect(() => {
+        // Load Twitter widgets
+        if (props.type === 'twitter' && window?.twttr?.widgets) {
+            window.twttr.widgets.load();
+        }
+    }, [props.link]);
+
     return <div>
     <div className="min-h-24 min-w-80 p-4 rounded-2xl shadow-md bg-white border-slate-200  border">
         <div className="flex justify-between max-h-7 py-2 mb-4">
@@ -75,9 +84,17 @@ const beUrl = import.meta.env.VITE_BE_URL as string
             {props.type==='youtube' && <iframe className="w-full rounded-xl" src={props.link?.includes('youtu.be')?props.link?.replace('youtu.be','youtube.com/embed'):props.link?.replace('watch?v=','embed/')} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>}
 
             
-            {props.type==='twitter' && <blockquote className="twitter-tweet">
-                <a href={props.link?.replace('x.com','twitter.com')}></a> 
-            </blockquote>}
+            {props.type==='twitter' && (
+                <>
+                    <blockquote className="twitter-tweet">
+                        <a href={props.link?.replace('x.com','twitter.com')}>
+                            Loading tweet...
+                        </a>
+                    </blockquote>
+                    {/* Re-run the widget script after the tweet is rendered */}
+                    {typeof window !== "undefined" && window?.twttr?.widgets?.load()}
+                </>
+            )}
             
 
             {props.type==='article' && <div className="flex flex-wrap"> {props.link} </div> }
@@ -87,5 +104,6 @@ const beUrl = import.meta.env.VITE_BE_URL as string
         </div>
         
     </div>
+    <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
     </div>
 }
