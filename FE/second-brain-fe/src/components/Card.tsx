@@ -5,6 +5,7 @@ import { TwitterIcon } from "../icons/Twitter"
 import { DocumentIcon } from "../icons/DocumentIcon"
 import { useLocation } from "react-router-dom"
 import axios from "axios"
+import { ImageIcon } from "../icons/ImageIcon"
 
 
 interface card{
@@ -24,7 +25,7 @@ const beUrl = import.meta.env.VITE_BE_URL as string
         <div className="flex justify-between max-h-7 py-2 mb-4">
             <div className="flex items-center gap-4">
                 <div>
-                {props.type==='youtube'?<YoutubeIcon/>:props.type==='twitter'?<TwitterIcon/>:<DocumentIcon/>}
+                {props.type==='youtube'?<YoutubeIcon/>:props.type==='twitter'?<TwitterIcon/>:props.type==='article'?<DocumentIcon/>:<ImageIcon/>}
                </div>
                <div className="font-semibold ">
                 {props.title}
