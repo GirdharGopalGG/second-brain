@@ -6,7 +6,6 @@ import { DocumentIcon } from "../icons/DocumentIcon"
 import { useLocation } from "react-router-dom"
 import axios from "axios"
 import { ImageIcon } from "../icons/ImageIcon"
-import { useEffect } from "react"
 
 
 interface card{
@@ -22,12 +21,6 @@ const beUrl = import.meta.env.VITE_BE_URL as string
     const location = useLocation()
     // console.log(location.pathname)
 
-    useEffect(() => {
-        // Load Twitter widgets
-        if (props.type === 'twitter' && window?.twttr?.widgets) {
-            window.twttr.widgets.load();
-        }
-    }, [props.link]);
 
     return <div>
     <div className="min-h-24 min-w-80 p-4 rounded-2xl shadow-md bg-white border-slate-200  border">
@@ -91,8 +84,7 @@ const beUrl = import.meta.env.VITE_BE_URL as string
                             Loading tweet...
                         </a>
                     </blockquote>
-                    {/* Re-run the widget script after the tweet is rendered */}
-                    {typeof window !== "undefined" && window?.twttr?.widgets?.load()}
+                   
                 </>
             )}
             
