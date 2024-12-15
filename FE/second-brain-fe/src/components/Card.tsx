@@ -63,7 +63,7 @@ const beUrl = import.meta.env.VITE_BE_URL as string
                 
                 >
 
-                {location.pathname==='/' && <DelIcon/>}
+                {location.pathname==='/dash' && <DelIcon/>}
             </div>
 
             </div>
