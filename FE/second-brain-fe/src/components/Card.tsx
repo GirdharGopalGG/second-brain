@@ -6,7 +6,13 @@ import { DocumentIcon } from "../icons/DocumentIcon"
 import { useLocation } from "react-router-dom"
 import axios from "axios"
 import { ImageIcon } from "../icons/ImageIcon"
+import { useEffect } from "react"
 
+declare global {
+    interface Window {
+        twttr: any;
+    }
+}
 
 interface card{
     type?:"youtube"|"twitter"|"article"|"image",
@@ -17,6 +23,19 @@ interface card{
 
 export function Card(props:card){
 const beUrl = import.meta.env.VITE_BE_URL as string
+
+useEffect(() => {
+        if (props.type === 'twitter') {
+            const loadTwitterScript = ()=>{
+                    if (window.twttr) {
+                        window.twttr.widgets.load();
+                    }
+                
+            };
+
+            loadTwitterScript();
+        }
+    }, []);
 
     const location = useLocation()
     // console.log(location.pathname)
@@ -74,28 +93,33 @@ const beUrl = import.meta.env.VITE_BE_URL as string
                 
 
             {/* ?.replace('watch?v=','embed/') */}
-            {props.type==='youtube' && <iframe className="w-full rounded-xl" src={props.link?.includes('youtu.be')?props.link?.replace('youtu.be','youtube.com/embed'):props.link?.replace('watch?v=','embed/')} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>}
+            {props.type==='youtube' && <iframe className="min-h-40 w-full rounded-xl" src={props.link?.includes('youtu.be')?props.link?.replace('youtu.be','youtube.com/embed'):props.link?.replace('watch?v=','embed/')} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>}
 
             
-            {props.type==='twitter' && (
-                <>
-                    <blockquote className="twitter-tweet">
-                        <a href={props.link?.replace('x.com','twitter.com')}>
-                            Loading tweet...
-                        </a>
-                    </blockquote>
-                   
-                </>
-            )}
+            {props.type === 'twitter' && <div className="h-40 overflow-hidden">
+                <blockquote
+                    className="twitter-tweet">
+                    <a href={props.link?.replace('x.com','twitter.com')}>
+                    </a>
+                </blockquote>    
+                </div>
+            }         
+            
             
 
-            {props.type==='article' && <div className="flex flex-wrap"> {props.link} </div> }
+            {props.type==='article' && <div 
+                className="h-40 break-all overflow-hidden" > 
+                    {props.link} 
+                </div> }
            
-            {props.type==='image' && <div className="flex flex-wrap"> {props.link} </div> }
+            {props.type==='image' && <div 
+                className="h-40 break-all overflow-hidden">
+                    {props.link} 
+                </div> }
+
 
         </div>
         
     </div>
-    <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
     </div>
 }
