@@ -10,7 +10,7 @@ import axios from "axios"
 
 
 const beUrl = import.meta.env.VITE_BE_URL as string
-console.log(beUrl)
+// console.log(beUrl)
 
  export function Dashboard(){
   const [modalOpen, setModalOpen] = useState(false)
@@ -38,10 +38,11 @@ console.log(beUrl)
                     }
                   })
                   const shareUrl = `https://secondbrain-mu.vercel.app/${response.data.link}`
+                  
+                  navigator.clipboard.writeText(shareUrl)
 
                   alert("Copied to Clipboard")
                   
-                  navigator.clipboard.writeText(shareUrl)
                 } 
               }  
                 

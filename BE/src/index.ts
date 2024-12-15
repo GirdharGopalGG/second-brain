@@ -116,14 +116,22 @@ app.delete('/content',authMiddleware,async (req,res)=>{
 app.post('/share',authMiddleware,async (req,res)=>{
     const share:boolean = req.body.share
 
+    try{
     const linkExists = await linkModel.findOne({
         //@ts-ignore
         userId:req.id,
     })
+    
     if(linkExists){
         const hash = linkExists.hash
         res.json({
             link:'share/'+hash
+        })
+        return
+    }
+    }catch(e){
+        res.json({
+            msg:'link does not exist'
         })
         return
     }
