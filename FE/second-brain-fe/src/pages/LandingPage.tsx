@@ -18,8 +18,8 @@ export function LandingPage(){
                     </div>
                 </div>
 
-                <div className="w-full md:w-1/2 flex flex-col items-center">
-                    <div className="flex items-center justify-center mb-8">
+                <div className=" max-w-fit p-4 md:p-6 rounded-lg shadow-lg bg-white  md:w-1/2 flex flex-col items-center">
+                    <div className="flex items-center justify-around mb-6">
                         <div className="text-3xl md:text-5xl text-blue-200">
                             <span className="underline italic font-semibold px-4">
                                 Second Brain
@@ -32,8 +32,8 @@ export function LandingPage(){
                         />
                     </div>
 
-                    <div className="flex flex-col gap-6 w-full max-w-md px-4">
-                        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-2xl md:text-5xl text-blue-200">
+                    <div className="flex flex-col gap-4 w-full max-w-md px-4">
+                        <div className="flex flex-row items-center justify-around gap-6 text-2xl md:text-3xl text-blue-200">
                             <div>New User </div>
                             <Button 
                                 variant="primary" 
@@ -41,7 +41,7 @@ export function LandingPage(){
                                 text="Sign up" 
                             />
                         </div>
-                        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 text-2xl md:text-5xl text-blue-200">
+                        <div className="flex flex-row items-center justify-around gap-6 text-2xl md:text-3xl text-blue-200">
                             <div>Existing User</div>
                             <Button 
                                 variant="secondary" 
