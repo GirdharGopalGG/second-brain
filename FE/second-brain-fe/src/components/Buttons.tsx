@@ -3,7 +3,7 @@ import { ReactElement } from "react";
 interface buttonInterface{
     variant:'primary' | 'secondary',
     startIcon?:ReactElement,
-    text:string,
+    text?:string,
     onClick?:()=>void,
     wide?:boolean,
     classname?:string,
