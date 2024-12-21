@@ -43,7 +43,7 @@ useEffect(() => {
 
     return <div>
     <div className="min-h-24 min-w-80 p-4 rounded-2xl shadow-md bg-white border-slate-200  border">
-        <div className="flex justify-between max-h-7 py-2 mb-4">
+        <div className="flex justify-between mb-2 ">
             <div className="flex items-center gap-4">
                 <div>
                 {props.type==='youtube'?<YoutubeIcon/>:props.type==='twitter'?<TwitterIcon/>:props.type==='article'?<DocumentIcon/>:<ImageIcon/>}
@@ -52,7 +52,7 @@ useEffect(() => {
                 {props.title}
                 </div>
             </div>  
-            <div className="flex items-center gap-4 text-slate-500 ">
+            <div className="flex items-center gap-4  text-slate-500 ">
                 
                 { <a href={props.link} target="_blank">
                     <ShareIcon/>
@@ -96,7 +96,7 @@ useEffect(() => {
             {props.type==='youtube' && <iframe className="min-h-40 w-full rounded-xl" src={props.link?.includes('youtu.be')?props.link?.replace('youtu.be','youtube.com/embed'):props.link?.replace('watch?v=','embed/')} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>}
 
             
-            {props.type === 'twitter' && <div className="h-40 overflow-hidden">
+            {props.type === 'twitter' && <div className="h-40 overflow-hidden ">
                 <blockquote
                     className="twitter-tweet">
                     <a href={props.link?.replace('x.com','twitter.com')}>

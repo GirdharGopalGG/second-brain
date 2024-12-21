@@ -51,19 +51,19 @@ const beUrl = import.meta.env.VITE_BE_URL as string
         </div>
 
         <div className=" fixed top-0 left-0 h-screen w-screen  flex justify-center items-center ">
-            <div className="bg-white border  p-4 rounded-lg">
+            <div className="bg-white border  px-2 py-3 rounded-lg">
                 <div className="flex justify-end">
                     <div onClick={onClose} className="hover:cursor-pointer">
                         <CrossIcon />   
                     </div>
                 </div>
-                <div >
+                <div className="flex flex-col gap-2 p-1" >
                     <InputBox type="text" reference={titleRef} placeholder={'Title'} />
                     <InputBox type="text" reference={linkRef} placeholder={'Link'} />
                 </div>
                 <div className="flex justify-between px-10 items-center my-2 ">
                     <div className="cursor-default">Type: </div>
-                    <div>
+                    <div className="">
                         <Dropdown type={type} setType={setType} />
                     </div>
                 </div>
